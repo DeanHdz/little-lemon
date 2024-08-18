@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../../assets/images/littlelemon_logo.png';
 
 export default function Header() {
     return (
         <header>
-            <img src=""></img>
+            <img src={logo}></img>
             <nav>
                 <ul>
                     <Link to="/">Inicio</Link>
