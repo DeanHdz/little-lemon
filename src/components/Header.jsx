@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
     return (
@@ -6,12 +7,12 @@ export default function Header() {
             <img src=""></img>
             <nav>
                 <ul>
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Acerca de</a></li>
-                    <li><a href="#">Menú</a></li>
-                    <li><a href="#">Reservas</a></li>
-                    <li><a href="#">Pedidos en linea</a></li>
-                    <li><a href="#">Iniciar sesión</a></li>
+                    <Link to="/">Inicio</Link>
+                    <Link to="/about">Acerca de</Link>
+                    <Link to="/menu">Menú</Link>
+                    <Link to="/reservations">Reservas</Link>
+                    <Link to="/online-order">Pedidos en linea</Link>
+                    <Link to="/login">Iniciar sesión</Link>
                 </ul>
             </nav>
         </header>

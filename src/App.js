@@ -1,3 +1,5 @@
+import { Routes, Route, Link } from 'react-router-dom';
+
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Highlights from './components/Highlights';
@@ -10,10 +12,12 @@ function App() {
     <>
       <Header />
       <main>
-        <Hero />
-        <Highlights />
-        <Testimonials />
-        <About />
+        <Routes>
+          <Route path="/" element={<Hero />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/menu" element={<Highlights />} />
+          <Route path="/testimonials" element={<Testimonials />} />
+        </Routes>
       </main>
       <Footer />
     </>
