@@ -1,0 +1,45 @@
+#Hero {
+    color: #EDEFEE;
+    background-color: #495E57;
+    padding: 50px 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#Hero img {
+    max-width: 300px;
+    margin: 0 20px;
+    box-shadow: 0 0 10px 5px #333333;
+}
+
+#Hero button {
+    background-color: #F4CE14;
+    color: #495E57;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px 0;
+}
+
+#Hero button:hover {
+    background-color: #d4b100;
+    color: #495E57;
+    box-shadow: 0 0 10px 5px #333333;
+}
+
+#Hero h1 {
+    font-size: 2.5rem;
+    font-family: "Karla", "Sans Serif";
+    padding: 8px 0;
+    color: #F4CE14;
+}
+
+#Hero h2 {
+    font-size: 1.5rem;
+    font-family: "Karla", "Sans Serif";
+    padding: 8px 0;
+    color: #EDEFEE;
+}

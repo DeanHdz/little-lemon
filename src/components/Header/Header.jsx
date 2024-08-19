@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/images/littlelemon_logo.png';
+import './Header.css';
 
 export default function Header() {
     return (
