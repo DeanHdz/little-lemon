@@ -63,6 +63,15 @@
     color: #F4CE14;
 }
 
+#Highlights .Card-body {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
 #Highlights .Card img {
     max-width: 100%;
     border-radius: 16px 16px 0 0;

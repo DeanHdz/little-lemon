@@ -28,16 +28,13 @@ header a:active {
     text-decoration: none;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
     header {
-        padding: 1rem 0;
-    }
-
-    header img {
-        max-height: 4rem;
+        padding: 0;
+        flex-direction: column;
     }
 
     header a {
-        font-size: 1.5rem;
+        font-size: 0.8rem;
     }
 }
