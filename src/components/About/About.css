@@ -65,6 +65,7 @@
 
     #About>div {
         flex-direction: column;
+        padding: 0 24px;
     }
 
     #About-text{
