@@ -1,0 +1,19 @@
+#Order{
+    color: #F4CE14;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 20vh;
+    background-image: url('../../assets/images/restaurant.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#Order h1{
+    background-color: #495E57;
+    padding: 16px;
+    border-radius: 16px;
+}

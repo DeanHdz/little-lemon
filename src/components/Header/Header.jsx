@@ -10,7 +10,7 @@ export default function Header() {
             <nav>
                 <ul>
                     <Link to="/">Inicio</Link>
-                    <Link to="/about">Acerca de</Link>
+                    <Link to="/#About">Acerca de</Link>
                     <Link to="/menu">Menú</Link>
                     <Link to="/reservations">Reservas</Link>
                     <Link to="/online-order">Pedidos en linea</Link>

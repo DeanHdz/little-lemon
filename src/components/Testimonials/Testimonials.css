@@ -1,5 +1,7 @@
 #Testimonials {
-    background-color: #fafafa;
+    color: #EDEFEE;
+    background-color: #495E57;
+    justify-content: space-evenly;
 }
 
 #Testimonials h1 {
@@ -15,9 +17,24 @@
 }
 
 #Testimonials .Card {
+    background-color: #EDEFEE;
+    color: #495E57;
     margin: 10px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     width: 250px;
+}
+
+#Testimonials .Card p:last-child {
+    font-style: italic;
+    font-size: 1.2rem;
+}
+
+#Testimonials .Card p:last-child::before {
+    content: '"';
+}
+
+#Testimonials .Card p:last-child::after {
+    content: '"';
 }

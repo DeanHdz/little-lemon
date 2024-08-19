@@ -12,12 +12,12 @@ export default function Header() {
             <div>
                 <h3>Doormat <br /> Navigation</h3>
                 <ul>
-                    <li><Link to="/#">Home</Link></li>
-                    <li><Link to="/#about">About</Link></li>
-                    <li><Link to="/#menu">Menu</Link></li>
-                    <li><Link to="/reservations">Reservations</Link></li>
-                    <li><Link to="/#">Online Order</Link></li>
-                    <li><Link to="/#">Login</Link></li>
+                    <li><Link to="/">Inicio</Link></li>
+                    <li><Link to="/#About">Acerca de</Link></li>
+                    <li><Link to="/menu">Menú</Link></li>
+                    <li><Link to="/reservations">Reservas</Link></li>
+                    <li><Link to="/online-order">Pedidos en linea</Link></li>
+                    <li><Link to="/login">Iniciar sesión</Link></li>
                 </ul>
             </div>
             <div>
