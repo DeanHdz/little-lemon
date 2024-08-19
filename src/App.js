@@ -1,22 +1,22 @@
 import { Routes, Route } from 'react-router-dom';
 
+//Default layout
 import Header from './components/Header/Header';
-import Hero from './components/Hero/Hero';
-import Highlights from './components/Highlights/Highlights';
-import Testimonials from './components/Testimonials/Testimonials';
-import About from './components/About/About';
 import Footer from './components/Footer/Footer';
+
+//Paginas
+import Home from './Pages/Home/Home';
+import Reserve from './Pages/Reserve/Reserve';
 
 function App() {
   return (
     <>
       <Header />
       <main>
-        <Hero />
-        <Highlights />
-        <Testimonials />
-        <About />
-        
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/reservations" element={<Reserve />} />
+        </Routes>
       </main>
       <Footer />
     </>

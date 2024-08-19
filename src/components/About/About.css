@@ -1,0 +1,14 @@
+#About {
+    background-color: #fafafa;
+}
+
+#About h1 {
+    font-size: 2rem;
+    padding: 20px;
+}
+
+#About>div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

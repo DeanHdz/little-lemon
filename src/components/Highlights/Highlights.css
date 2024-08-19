@@ -4,8 +4,6 @@
 
 #Highlights h1 {
     font-size: 2rem;
-    text-align: left;
-    padding: 20px;
 }
 
 #Highlights button {
@@ -28,7 +26,8 @@
 
 #Highlights .Title {
     display: flex;
-    justify-content: space-evenly;
+    padding: 0 20px;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
 }

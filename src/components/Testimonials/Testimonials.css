@@ -1,0 +1,23 @@
+#Testimonials {
+    background-color: #fafafa;
+}
+
+#Testimonials h1 {
+    font-size: 2rem;
+    text-align: left;
+    padding: 20px;
+}
+
+#Testimonials>div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#Testimonials .Card {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 250px;
+}
