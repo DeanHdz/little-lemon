@@ -8,6 +8,7 @@ export default function BookingForm(props) {
     const [tel, setTel] = useState("");
     const [people, setPeople] = useState(1);
     const [date, setDate] = useState("");
+    const [time, setTime] = useState("");
     const [occasion, setOccasion] = useState("");
     const [preferences, setPreferences] = useState("");
     const [comments, setComments] = useState("");
@@ -34,6 +35,7 @@ export default function BookingForm(props) {
             newErrors.tel = "El número de teléfono no es válido. Usa un formato válido, como 1234567890, 123-456-7890, o (123) 456-7890.";
         }
         if (!date) newErrors.date = "La fecha es obligatoria.";
+        if (!time) newErrors.time = "La hora es obligatoria.";
         if (!people || people < 1) newErrors.people = "Se requiere al menos una persona.";
         if (!preferences || preferences === "Ninguna") newErrors.preferences = "Por favor selecciona una preferencia de mesa.";
 
@@ -145,13 +147,20 @@ export default function BookingForm(props) {
 
                 <div className="form-group">
                     <label htmlFor="time">Seleccionar Hora</label>
-                    <select id="time" required>
+                    <select
+                        id="time"
+                        value={time}
+                        onChange={(e) => setTime(e.target.value)}
+                        required
+                    >
+                        <option value="">Selecciona una hora</option>
                         {props.availableTimes.map((time) => (
                             <option key={time} value={time}>
                                 {time}
                             </option>
                         ))}
                     </select>
+                    {errors.time && <span className="error">{errors.time}</span>}
                 </div>
 
                 <div className="form-group">
@@ -197,7 +206,7 @@ export default function BookingForm(props) {
             </fieldset>
 
             <div className="form-actions">
-                <button type="submit" onClick={handleSubmit} className="action-button">
+                <button type="submit" aria-label="Reservar Mesa" onClick={handleSubmit} className="action-button">
                     Reservar Mesa
                 </button>
             </div>

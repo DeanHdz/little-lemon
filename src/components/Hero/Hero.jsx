@@ -11,7 +11,7 @@ export default function Hero() {
                 <h2>Chicago</h2>
                 <p>Somos un restaurante ubicado en Chicago, Illinois. <br /> Te invitamos a probar nuestra gran variedad de platillos. </p>
                 <Link to="/reservations">
-                    <button>Reservar una mesa</button>
+                    <button aria-label="On Click" >Reservar una mesa</button>
                 </Link>
             </div>
             <div>

@@ -31,7 +31,6 @@ test('no muestra errores cuando el formulario es válido', () => {
   fireEvent.change(screen.getByPlaceholderText('(xxx)-xxx-xxxx'), { target: { value: '444-456-7890' } });
   fireEvent.change(screen.getByLabelText('Número de invitados'), { target: { value: '2' } });
   fireEvent.change(screen.getByLabelText('Seleccionar Fecha'), { target: { value: '2024-08-20' } });
-  fireEvent.change(screen.getByLabelText('Seleccionar Hora'), { target: { value: '17:00' } });
   fireEvent.change(screen.getByLabelText('Mesa interior o exterior'), { target: { value: 'Interior' } });
 
   // Dispara el evento de submit

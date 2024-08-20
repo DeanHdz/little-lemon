@@ -8,7 +8,7 @@ export default function Highlights() {
         <section id="Highlights">
             <div className='Title'>
                 <h1>¡Platillos especiales de la semana!</h1>
-                <Link to='/menu'><button>Ver menú completo</button></Link>
+                <Link to='/menu'><button aria-label="On Click">Ver menú completo</button></Link>
             </div>
             <div className='Body'>
                 <div className='Card'>
