@@ -4,13 +4,15 @@ import "./Reserve.css";
 import { fetchAPI } from "../../utils/API";
 
 export default function Reserve() {
+    const initializeTimes = () => fetchAPI(new Date());
 
-    const output = fetchAPI(new Date());
+    const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
 
-    const [availableTimes, dispatch] = useReducer(updateTimes, output);
-
-    function updateTimes(date) {
-        return fetchAPI(date);
+    function updateTimes(state, action) {
+        if (action.type === "dateChanged") {
+            return fetchAPI(action.payload);
+        }
+        return state;
     }
 
     return (
@@ -20,5 +22,5 @@ export default function Reserve() {
             </div>
             <BookingForm availableTimes={availableTimes} updateTimes={dispatch} />
         </>
-    )
-};
+    );
+}

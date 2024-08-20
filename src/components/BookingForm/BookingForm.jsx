@@ -1,8 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import "./BookingForm.css"; // Asegúrate de crear y vincular este archivo CSS
+import "./BookingForm.css";
 
-//Formulario de Booking/reserva
 export default function BookingForm(props) {
     const [fName, setFName] = useState("");
     const [lName, setLName] = useState("");
@@ -13,21 +11,43 @@ export default function BookingForm(props) {
     const [occasion, setOccasion] = useState("");
     const [preferences, setPreferences] = useState("");
     const [comments, setComments] = useState("");
-
-    const [finalTime, setFinalTime] = useState(
-        props.availableTimes.map((times) => <option>{times}</option>)
-    );
+    const [errors, setErrors] = useState({});
 
     function handleDateChange(e) {
+        const newDate = new Date(e.target.value);
         setDate(e.target.value);
-
-        var stringify = e.target.value;
-        const date = new Date(stringify);
-
-        props.updateTimes(date);
-
-        setFinalTime(props.availableTimes.map((times) => <option>{times}</option>));
+        props.updateTimes({ type: "dateChanged", payload: newDate });
     }
+
+    const validateForm = () => {
+        const newErrors = {};
+        if (!fName) newErrors.fName = "El nombre es obligatorio.";
+        if (!lName) newErrors.lName = "El apellido es obligatorio.";
+        if (!email) {
+            newErrors.email = "El correo electrónico es obligatorio.";
+        } else if (!/\S+@\S+\.\S+/.test(email)) {
+            newErrors.email = "El correo electrónico no es válido.";
+        }
+        if (!tel) {
+            newErrors.tel = "El número de teléfono es obligatorio.";
+        } else if (!/^\d{10}$|^\d{3}[-.\s]?\d{3}[-.\s]?\d{4}$|^\(\d{3}\)[-\s]?\d{3}[-.\s]?\d{4}$/.test(tel)) {
+            newErrors.tel = "El número de teléfono no es válido. Usa un formato válido, como 1234567890, 123-456-7890, o (123) 456-7890.";
+        }
+        if (!date) newErrors.date = "La fecha es obligatoria.";
+        if (!people || people < 1) newErrors.people = "Se requiere al menos una persona.";
+        if (!preferences || preferences === "Ninguna") newErrors.preferences = "Por favor selecciona una preferencia de mesa.";
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (validateForm()) {
+            console.log("Formulario enviado exitosamente");
+            window.location.href = "/confirmation";
+        }
+    };
 
     return (
         <form className="reservation-form">
@@ -35,17 +55,18 @@ export default function BookingForm(props) {
             <fieldset>
                 <legend>Información Personal</legend>
                 <div className="form-group">
-                    <label htmlFor="fName">Nombres</label>
+                    <label htmlFor="fName">Nombre</label>
                     <input
                         type="text"
                         id="fName"
-                        placeholder="First Name"
+                        placeholder="Nombre"
                         required
                         minLength={2}
                         maxLength={50}
                         value={fName}
                         onChange={(e) => setFName(e.target.value)}
                     />
+                    {errors.fName && <span className="error">{errors.fName}</span>}
                 </div>
 
                 <div className="form-group">
@@ -53,30 +74,32 @@ export default function BookingForm(props) {
                     <input
                         type="text"
                         id="lName"
-                        placeholder="Last Name"
+                        placeholder="Apellidos"
                         minLength={2}
                         maxLength={50}
                         value={lName}
                         onChange={(e) => setLName(e.target.value)}
                     />
+                    {errors.lName && <span className="error">{errors.lName}</span>}
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="email">Correo electronico</label>
+                    <label htmlFor="email">Correo electrónico</label>
                     <input
                         type="email"
                         id="email"
-                        placeholder="Email"
+                        placeholder="Correo electrónico"
                         value={email}
                         required
                         minLength={4}
                         maxLength={200}
                         onChange={(e) => setEmail(e.target.value)}
                     />
+                    {errors.email && <span className="error">{errors.email}</span>}
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="phonenum">Numero de celular</label>
+                    <label htmlFor="phonenum">Número de celular</label>
                     <input
                         type="tel"
                         id="phonenum"
@@ -87,23 +110,25 @@ export default function BookingForm(props) {
                         maxLength={25}
                         onChange={(e) => setTel(e.target.value)}
                     />
+                    {errors.tel && <span className="error">{errors.tel}</span>}
                 </div>
             </fieldset>
 
             <fieldset>
                 <legend>Detalles de reservación</legend>
                 <div className="form-group">
-                    <label htmlFor="people">Numero de invitados</label>
+                    <label htmlFor="people">Número de invitados</label>
                     <input
                         type="number"
                         id="people"
-                        placeholder="Number of People"
+                        placeholder="Número de personas"
                         value={people}
                         required
                         min={1}
                         max={100}
                         onChange={(e) => setPeople(e.target.value)}
                     />
+                    {errors.people && <span className="error">{errors.people}</span>}
                 </div>
 
                 <div className="form-group">
@@ -115,12 +140,17 @@ export default function BookingForm(props) {
                         value={date}
                         onChange={handleDateChange}
                     />
+                    {errors.date && <span className="error">{errors.date}</span>}
                 </div>
 
                 <div className="form-group">
                     <label htmlFor="time">Seleccionar Hora</label>
                     <select id="time" required>
-                        {finalTime}
+                        {props.availableTimes.map((time) => (
+                            <option key={time} value={time}>
+                                {time}
+                            </option>
+                        ))}
                     </select>
                 </div>
 
@@ -131,11 +161,10 @@ export default function BookingForm(props) {
                         value={occasion}
                         onChange={(e) => setOccasion(e.target.value)}
                     >
-                        <option>None</option>
-                        <option>Birthday</option>
-                        <option>Anniversary</option>
-                        <option>Engagement</option>
-                        <option>Other</option>
+                        <option>Ninguno</option>
+                        <option>Cumpleaños</option>
+                        <option>Aniversario</option>
+                        <option>Otro</option>
                     </select>
                 </div>
 
@@ -146,11 +175,12 @@ export default function BookingForm(props) {
                         value={preferences}
                         onChange={(e) => setPreferences(e.target.value)}
                     >
-                        <option>None</option>
-                        <option>Indoors</option>
-                        <option>Outdoor (Patio)</option>
-                        <option>Outdoor (Sidewalk)</option>
+                        <option>Ninguna</option>
+                        <option>Interior</option>
+                        <option>Exterior (Patio)</option>
+                        <option>Exterior (Banqueta)</option>
                     </select>
+                    {errors.preferences && <span className="error">{errors.preferences}</span>}
                 </div>
 
                 <div className="form-group">
@@ -159,7 +189,7 @@ export default function BookingForm(props) {
                         id="comments"
                         rows={5}
                         cols={50}
-                        placeholder="Additional Comments"
+                        placeholder="Comentarios adicionales"
                         value={comments}
                         onChange={(e) => setComments(e.target.value)}
                     ></textarea>
@@ -167,9 +197,9 @@ export default function BookingForm(props) {
             </fieldset>
 
             <div className="form-actions">
-                <Link className="action-button" to="/confirmation">
-                    Book Table
-                </Link>
+                <button type="submit" onClick={handleSubmit} className="action-button">
+                    Reservar Mesa
+                </button>
             </div>
         </form>
     );
