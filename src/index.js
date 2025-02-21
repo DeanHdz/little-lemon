@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom'; //Necesario para SPA
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
+  <BrowserRouter basename="/little-lemon">
     <App />
   </BrowserRouter>
 );
